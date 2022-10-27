@@ -1,4 +1,4 @@
-package ru.netology.data;
+package ru.netology.sql;
 
 import lombok.SneakyThrows;
 import lombok.val;
@@ -8,7 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SqlHelper {
+public class DbHelper {
+
     public static Connection getConnection() throws SQLException {
         String url = System.getProperty("url");
         String username = System.getProperty("username");
@@ -21,43 +22,48 @@ public class SqlHelper {
         return null;
     }
 
-
     @SneakyThrows
-    public static void deleteTables() {
-        val creditRequest = "DELETE FROM credit_request_entity";
-        val order = "DELETE FROM order_entity";
-        val payment = "DELETE FROM payment_entity";
+    public static void cleanDb() {
+        val deleteCreditRequest = "DELETE FROM credit_request_entity";
+        val deleteOrderEntity = "DELETE FROM order_entity";
+        val deletePaymentEntity = "DELETE FROM payment_entity";
         val runner = new QueryRunner();
         try (val conn = getConnection();
         ) {
-            runner.update(conn, creditRequest);
-            runner.update(conn, order);
-            runner.update(conn, payment);
+            runner.update(conn, deleteCreditRequest);
+            runner.update(conn, deleteOrderEntity);
+            runner.update(conn, deletePaymentEntity);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
     @SneakyThrows
-    public static String getStatusCreditRequestEntity() {
+    public static String getPaymentEntity() {
         try (val conn = getConnection();
              val countStmt = conn.createStatement()) {
-            val sql = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
-            val resultSet = countStmt.executeQuery(sql);
+            val paymentStatus = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1;";
+            val resultSet = countStmt.executeQuery(paymentStatus);
             if (resultSet.next()) {
                 return resultSet.getString("status");
             }
+        } catch (SQLException err) {
+            err.printStackTrace();
         }
         return null;
     }
 
     @SneakyThrows
-    public static String getStatusPaymentEntity() {
+    public static String getCreditEntity() {
         try (val conn = getConnection();
              val countStmt = conn.createStatement()) {
-            val sql = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1;";
-            val resultSet = countStmt.executeQuery(sql);
+            val creditStatus = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
+            val resultSet = countStmt.executeQuery(creditStatus);
             if (resultSet.next()) {
                 return resultSet.getString("status");
             }
+        } catch (SQLException err) {
+            err.printStackTrace();
         }
         return null;
     }
