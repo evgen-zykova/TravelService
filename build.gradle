@@ -32,16 +32,18 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.20.0'
     testImplementation 'mysql:mysql-connector-java:8.0.30'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
+
 
 }
 
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'url', System.getProperty('url')
+    systemProperty 'url', System.getProperty('url', 'jdbc:mysql://localhost:3306/app')
     systemProperty 'username', System.getProperty('username', 'app')
     systemProperty 'password', System.getProperty('password', 'pass')
     systemProperty 'sut.url', System.getProperty('sut.url', 'http://localhost:8080')

@@ -3,6 +3,8 @@ package ru.netology.page;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -16,13 +18,13 @@ public class DashboardPage {
 
     public PaymentPage payByDebitCard() {
         paymentButton.click();
-        payCard.shouldBe(visible);
+        payCard.shouldBe(visible, Duration.ofSeconds(150));
         return new PaymentPage();
     }
 
     public PaymentPage payByCreditCard() {
         creditButton.click();
-        payCredit.shouldBe(visible);
+        payCredit.shouldBe(visible, Duration.ofSeconds(150));
         return new PaymentPage();
     }
 }

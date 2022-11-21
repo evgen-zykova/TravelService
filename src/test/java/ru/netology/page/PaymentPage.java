@@ -37,12 +37,10 @@ public class PaymentPage {
     }
 
     public void waitSuccessNotification() {
-        successNotification.shouldBe(Condition.visible);
+        successNotification.shouldBe(Condition.visible, Duration.ofSeconds(150));
     }
 
-    public void waitErrorNotification() {
-        errorNotification.shouldBe(Condition.visible);
-    }
+    public void waitErrorNotification() { errorNotification.shouldBe(Condition.visible);}
 
     public void checkInvalidCardNumber() {
         cardNumberFieldWarning.shouldHave(text("Неверный формат"));
