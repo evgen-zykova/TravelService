@@ -14,9 +14,11 @@
 * количество успешных тест-кейсов - 10 (55,55%)
 * количество не успешных тест-кейсов - 8 (44,45%)
 
- ![](../../OneDrive/Рабочий стол/report.png)
+ ![](C:\Users\ribao\IdeaProjects\report\report.png)
 
- ![](../../OneDrive/Рабочий стол/report 2.png)
+
+ ![](C:\Users\ribao\IdeaProjects\report\report 2.png)
+ 
 
 
 3. Общие рекомендации
