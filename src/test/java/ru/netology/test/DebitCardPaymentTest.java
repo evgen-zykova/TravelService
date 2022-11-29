@@ -20,8 +20,9 @@ public class DebitCardPaymentTest {
     DashboardPage dashboardPage = new DashboardPage();
 
     @BeforeEach
-    void setup() {
-        open("http://localhost:8080");
+    public void openPage() {
+        String url = System.getProperty("sut.url");
+        open(url);
         Selenide.clearBrowserCookies();
         Selenide.clearBrowserLocalStorage();
     }
