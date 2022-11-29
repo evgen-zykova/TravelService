@@ -14,9 +14,12 @@
 * количество успешных тест-кейсов - 10 (55,55%)
 * количество не успешных тест-кейсов - 8 (44,45%)
 
-![](../report/report.png)
+![report](https://user-images.githubusercontent.com/103605955/204541430-be2aeb8c-b956-4f91-bd16-b1affba7deaa.png)
 
-![](../report/report 2.png)
+![report 2](https://user-images.githubusercontent.com/103605955/204541474-5f63063b-4a46-4e68-b1ac-bb126617ca9f.png)
+
+
+
 
 3. Общие рекомендации
 
